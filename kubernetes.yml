@@ -19,8 +19,8 @@ spec:
         role: backend
     spec:
       containers:
-      - name: master
-        image: $(IMAGE)
+      - name: peytz-mail-geo
+        image: eu.gcr.io/peytzmail/peytz-mail-geo
         resources:
           requests:
             cpu: 100m
