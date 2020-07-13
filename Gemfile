@@ -1,3 +1,9 @@
+source 'https://rubygems.org'
+
 gem 'sinatra'
+gem 'sinatra-contrib'
 gem 'maxmind-db'
-gem 'pry', '~> 0.12.2'
+
+group :test, :development do
+  gem 'pry'
+end

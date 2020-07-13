@@ -1,0 +1,15 @@
+version: '3'
+services:
+  app:
+    tty: true
+    stdin_open: true
+    build: .
+    image: peytz-mail-geo
+    command: rackup --host 0.0.0.0 -p 3000
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    environment:
+      - COLUMNS=235
+      - LINES=37
