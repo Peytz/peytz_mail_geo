@@ -40,9 +40,11 @@ metadata:
     app: geoip_database
     role: backend
 spec:
-  ports:
-  - port: 80
-    targetPort: 3000
   selector:
     app: geoip_database
     role: backend
+  type: ClusterIP
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 3000

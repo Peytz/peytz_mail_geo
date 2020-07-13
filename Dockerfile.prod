@@ -10,4 +10,4 @@ ENV APP_ENV=production
 RUN gem install bundler --no-document
 RUN bundle install --without test development
 
-CMD [ "rackup", "-p", "3000" ]
+CMD [ "rackup", "--host", "0.0.0.0", "-p", "3000" ]
