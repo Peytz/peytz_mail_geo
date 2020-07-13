@@ -11,6 +11,8 @@ GEM
     rack (2.0.8)
     rack-protection (2.0.8.1)
       rack
+    rack-test (1.1.0)
+      rack (>= 1.0, < 3)
     ruby2_keywords (0.0.2)
     sinatra (2.0.8.1)
       mustermann (~> 1.0)
@@ -25,6 +27,7 @@ PLATFORMS
 DEPENDENCIES
   maxmind-db
   pry (~> 0.12.2)
+  rack-test
   sinatra
 
 BUNDLED WITH
