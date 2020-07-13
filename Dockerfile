@@ -1,5 +1,6 @@
 FROM ruby:2.7.1
 EXPOSE 3000
+VOLUME .
 
 RUN mkdir -p /app
 COPY . /app
