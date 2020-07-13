@@ -9,7 +9,7 @@ steps:
 - name: "gcr.io/cloud-builders/gke-deploy"
   args:
   - run
-  - --filename=deployment.yml
+  - --filename=kubernetes.yml
   - --image=eu.gcr.io/peytzmail/peytz-mail-geo:$SHORT_SHA
   - --location=europe-west1-c
   - --cluster=cluster-1
