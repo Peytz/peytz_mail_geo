@@ -1,4 +1,10 @@
+source 'https://rubygems.org'
+
 gem 'sinatra'
+gem 'sinatra-contrib'
 gem 'maxmind-db'
-gem 'pry', '~> 0.12.2'
-gem 'rack-test'
+
+group :test, :development do
+  gem 'pry'
+  gem 'rack-test'
+end
