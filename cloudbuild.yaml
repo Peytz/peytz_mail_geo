@@ -1,0 +1,15 @@
+steps:
+  # build the container image
+- name: "gcr.io/cloud-builders/docker"
+  args: ["build", "-t", "eu.gcr.io/peytzmail/peytz-mail-geo:$SHORT_SHA", "."]
+  # push container image
+- name: "gcr.io/cloud-builders/docker"
+  args: ["push", "eu.gcr.io/peytzmail/peytz-mail-geo:$SHORT_SHA"]
+  # deploy container image to GKE
+- name: "gcr.io/cloud-builders/gke-deploy"
+  args:
+  - run
+  - --filename=deployment.yml
+  - --image=eu.gcr.io/peytzmail/peytz-mail-geo:$SHORT_SHA
+  - --location=europe-west1-c
+  - --cluster=cluster-1
