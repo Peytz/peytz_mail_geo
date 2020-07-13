@@ -1,7 +1,6 @@
 require './app'
 require 'test/unit'
 require 'rack/test'
-require 'pry'
 
 set :environment, :test
 
