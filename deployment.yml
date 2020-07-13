@@ -2,8 +2,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: peytz-mail-geoip
-  namespace: peytzmail
+  name: peytz-mail-geo
+  namespace: default
   labels:
     app: geoip_database
 spec:
@@ -34,8 +34,8 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: peytz-mail-geoip
-  namespace: peytzmail
+  name: peytz-mail-geo
+  namespace: default
   labels:
     app: geoip_database
     role: backend
