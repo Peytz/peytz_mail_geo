@@ -2,7 +2,7 @@ steps:
   # build the container image
 - name: "gcr.io/cloud-builders/docker"
   id: build-image
-  args: ["build", "-f", "ci/Dockerfile.prod", "-t", "eu.gcr.io/peytzmail/peytz-mail-geo:$SHORT_SHA", "."]
+  args: ["build", "-f", "ci/Dockerfile.prod", "-t", "eu.gcr.io/peytzmail/peytz-mail-geo:$SHORT_SHA", "-t", "eu.gcr.io/peytzmail/peytz-mail-geo:latest", "."]
   # push container image
 - name: "gcr.io/cloud-builders/docker"
   id: push-image
