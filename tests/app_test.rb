@@ -1,6 +1,6 @@
-require './app'
 require 'test/unit'
 require 'rack/test'
+require_relative '../app'
 
 set :environment, :test
 
@@ -16,7 +16,7 @@ class AppTest < Test::Unit::TestCase
     wrong_ip = 'wrong_ip'
     
     reader = MaxMind::DB.new(
-      'GeoLite2-Country.mmdb',
+      'db/GeoLite2-Country.mmdb',
       mode: MaxMind::DB::MODE_MEMORY
     )
     get('/', params={ ip: ip })
@@ -40,7 +40,7 @@ class AppTest < Test::Unit::TestCase
     wrong_ip = 'wrong_ip'
     
     reader = MaxMind::DB.new(
-      'GeoLite2-Country.mmdb',
+      'db/GeoLite2-Country.mmdb',
       mode: MaxMind::DB::MODE_MEMORY
     )
     get('/country_code', params={ ip: ip })

@@ -5,7 +5,7 @@ require 'maxmind/db'
 
 configure do
   $maxmind_reader = MaxMind::DB.new(
-    'GeoLite2-Country.mmdb',
+    'db/GeoLite2-Country.mmdb',
     mode: MaxMind::DB::MODE_MEMORY
   )
 end
