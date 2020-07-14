@@ -1,0 +1,7 @@
+version: '3'
+services:
+  app:
+    image: eu.gcr.io/peytzmail/peytz-mail-geo
+    command: /bin/sh bin/build/run_specs.sh
+    environment:
+      - APP_ENV=test

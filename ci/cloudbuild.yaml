@@ -1,12 +1,19 @@
 steps:
   # build the container image
 - name: "gcr.io/cloud-builders/docker"
+  id: build-image
   args: ["build", "-f", "ci/Dockerfile.prod", "-t", "eu.gcr.io/peytzmail/peytz-mail-geo:$SHORT_SHA", "."]
   # push container image
 - name: "gcr.io/cloud-builders/docker"
+  id: push-image
   args: ["push", "eu.gcr.io/peytzmail/peytz-mail-geo:$SHORT_SHA"]
+  # Run tests
+- name: 'gcr.io/peytzmail/docker-compose'
+  id: run-specs
+  args: ['-f', 'ci/docker-compose.yml', 'run', 'app']
   # deploy container image to GKE
 - name: "gcr.io/cloud-builders/gke-deploy"
+  id: deploy-kubernetes
   args:
   - run
   - --filename=ci/kubernetes.yml
