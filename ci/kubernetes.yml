@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: peytz-mail-geo
-  namespace: default
+  namespace: peytzmail
   labels:
     app: geoip_database
 spec:
@@ -30,12 +30,12 @@ spec:
             memory: 250Mi
         ports:
         - containerPort: 3000
----        
+---
 apiVersion: v1
 kind: Service
 metadata:
   name: peytz-mail-geo
-  namespace: default
+  namespace: peytzmail
   labels:
     app: geoip_database
     role: backend
