@@ -10,28 +10,33 @@ configure do
   )
 end
 
+# You can ask on the root path which will return
+# the fully detailed response from MaxMind
 get '/' do
   if params[:ip].nil? || params[:ip].empty?
-    halt 200
+    halt 200, { message: "I'm ok! Please ask me about an IP address." }.to_json
   end
 
-  geo_data = $maxmind_reader.get(params[:ip]) || {}
+  response = $maxmind_reader.get(params[:ip]) || {}
 
-  json geo_data
+  json response
 rescue IPAddr::InvalidAddressError
-  status 400
-  json error: "Bad request: IP address '#{params[:ip]}' is not valid"
+  status 422
+  json error: "Invalid IP address #{params[:ip]}"
 end
 
+# You can ask more detailed for the country code
 get '/country_code' do
   if params[:ip].nil? || params[:ip].empty?
-    halt 200
+    halt 422, { 'Content-Type' => 'application/json' }, { error: 'Missing IP address' }.to_json
   end
 
   geo_data = $maxmind_reader.get(params[:ip]) || {}
 
-  json country_code: geo_data.dig('country', 'iso_code')
+  response = { country_code: geo_data.dig('country', 'iso_code') }
+
+  json response
 rescue IPAddr::InvalidAddressError
-  status 400
-  json error: "Bad request: IP address '#{params[:ip]}' is not valid"
+  status 422
+  json error: "Invalid IP address #{params[:ip]}"
 end
