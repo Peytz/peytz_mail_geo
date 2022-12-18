@@ -13,10 +13,10 @@ steps:
   args: ['-f', 'ci/docker-compose.yml', 'run', 'app']
   # deploy container image to GKE
 - name: "gcr.io/cloud-builders/gke-deploy"
-  id: deploy-cluster-3
+  id: deploy-cluster-1
   args:
   - run
   - --filename=ci/kubernetes.yml
   - --image=eu.gcr.io/peytzmail/peytz-mail-geo:$SHORT_SHA
-  - --location=europe-west1-b
-  - --cluster=cluster-3
+  - --location=europe-west1
+  - --cluster=cluster-1
